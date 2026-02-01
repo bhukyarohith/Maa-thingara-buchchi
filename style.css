@@ -1,6 +1,82 @@
-body {  
- background-color: #111;    
- margin: 0;  
- overflow: hidden;  
- background-repeat: no-repeat;  
-}  
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #f8b6cc, #f6c1dd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* GLASS CARD */
+.card {
+  width: 420px;
+  padding: 40px 32px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 26px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+  transition: all 0.4s ease;
+}
+
+.hero {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: #222;
+}
+
+p {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 18px 0 28px;
+  color: #111;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+button {
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.25s ease;
+}
+
+#yes-btn {
+  background: #ff4f87;
+  color: white;
+}
+
+#yes-btn:hover {
+  transform: scale(1.08);
+}
+
+#no-btn {
+  background: #ececec;
+  color: #333;
+}
+
+.hidden {
+  display: none;
+  font-size: 18px;
+  margin-top: 22px;
+}
