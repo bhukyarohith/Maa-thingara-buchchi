@@ -1,57 +1,60 @@
-const yesBtn = document.getElementById("yes-btn");
-const noBtn = document.getElementById("no-btn");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
 const title = document.getElementById("title");
-const question = document.getElementById("question");
+const subtitle = document.getElementById("subtitle");
 const message = document.getElementById("message");
-const image = document.getElementById("hero-img");
+const hero = document.getElementById("hero");
 
-function moveNoButton() {
-  const maxX = window.innerWidth - noBtn.offsetWidth - 20;
-  const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+let answered = false;
+
+// NO button escape
+noBtn.addEventListener("mouseover", () => {
+  if (answered) return;
+
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 60);
 
   noBtn.style.position = "absolute";
-  noBtn.style.left = Math.random() * maxX + "px";
-  noBtn.style.top = Math.random() * maxY + "px";
-}
-
-// NO CLICK
-noBtn.addEventListener("mouseover", moveNoButton);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
 
 noBtn.addEventListener("click", () => {
+  if (answered) return;
+
   message.classList.remove("hidden");
   message.textContent =
     "oh ante nuvvu NO nokkithey silent ga untanu ani anukunnava 🤨";
 });
 
-// YES CLICK
+// YES button
 yesBtn.addEventListener("click", () => {
+  answered = true;
+
   noBtn.style.display = "none";
   yesBtn.style.display = "none";
 
-  title.textContent = "Yeeeesss 💕";
-  question.textContent = "See you on the 14th, Princess 😌";
+  title.textContent = "Yeeeesss 💖";
+  subtitle.textContent = "See you on the 14th, Princess 😌";
+  hero.src = "images/dance.gif";
+
   message.textContent =
     "NO tap chesi untey nee pani aipoyedhi 😤👊🏻";
   message.classList.remove("hidden");
 
-  image.src = "images/dance.gif";
-
   launchHearts();
 });
 
-// HEART CONFETTI
 function launchHearts() {
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 20; i++) {
     const heart = document.createElement("div");
-    heart.innerText = "💖";
-    heart.style.position = "fixed";
+    heart.className = "heart";
+    heart.textContent = "💖";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "100vh";
-    heart.style.fontSize = "22px";
-    heart.style.animation = "floatUp 2.5s ease forwards";
+    heart.style.animationDelay = Math.random() + "s";
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 2500);
+    setTimeout(() => heart.remove(), 3000);
   }
 }
